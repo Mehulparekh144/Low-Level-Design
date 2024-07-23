@@ -3,10 +3,12 @@ package builder;
 public class Main {
 
   public static void main(String[] args) {
-    Director director = new Director(new EngineerStudentBuilder());
-    System.out.println(director.createEngineerStudent());
-    director = new Director(new MBAStudentBuilder());
-    System.out.println(director.createMBAStudent());
+    Dwight dwight = new Dwight(new BeetFarmBuilder());
+    SchruteFarm beetFarm = dwight.createFarm("Jim Halpert", "Black Bear");
+    System.out.println(beetFarm);
 
+    Dwight dwight2 = new Dwight(new WheatFarmBuilder());
+    SchruteFarm wheatFarm = dwight2.createFarm("Pam Beasly", "Cow");
+    System.out.println(wheatFarm);
   }
 }

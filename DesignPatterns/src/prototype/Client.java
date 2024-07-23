@@ -1,18 +1,20 @@
 package prototype;
 
+import java.util.Objects;
+
 public class Client {
 
   public static void main(String[] args) {
-    Student student = new Student(30 , 1 , "Dwight");
-    Student studentClone = (Student) student.clone();
+    Dwight dwight = new Dwight(30 , 1 , "Dwight");
+    Dwight jim = (Dwight) dwight.clone();
 //    studentClone.name = "Jim";
-    studentClone.age = 29;
+    jim.age = 29;
 
-    System.out.println(student);
-    System.out.println(studentClone);
+    System.out.println(dwight);
+    System.out.println(jim);
 
     // Just for fun
-    if(studentClone.name == student.name){
+    if(Objects.equals(jim.name, dwight.name)){
       System.out.println("Identity theft is not a joke, Jim! Millions of families suffer every year!");
     }
   }

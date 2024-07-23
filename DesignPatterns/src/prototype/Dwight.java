@@ -1,12 +1,12 @@
 package prototype;
 
-public class Student implements Prototype {
+public class Dwight implements Prototype {
 
   public int age;
   private int id;
   public String name;
 
-  public Student(int age, int id, String name) {
+  public Dwight(int age, int id, String name) {
     this.age = age;
     this.id = id;
     this.name = name;
@@ -14,7 +14,7 @@ public class Student implements Prototype {
 
   @Override
   public String toString() {
-    return "Student{" +
+    return "Dwight{" +
         "age=" + age +
         ", id=" + id +
         ", name='" + name + '\'' +
@@ -23,6 +23,6 @@ public class Student implements Prototype {
 
   @Override
   public Prototype clone() {
-    return new Student(age, id, name);
+    return new Dwight(age, id, name);
   }
 }
