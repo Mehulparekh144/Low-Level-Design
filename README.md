@@ -18,13 +18,8 @@ Welcome to "Design Patterns with a Twist: The Office Edition"! This repository i
 7. **Prototype Pattern** 🖨️
 8. **Singleton Pattern** 🔒
 9. **Strategy Pattern** 🎯
-
-## 🤓 How to Use
-
-Each pattern in this repository comes with:
-- **Explanation**: A brief description of the pattern.
-- **The Office Analogy**: A fun, related example from "The Office".
-- **Code Example**: A practical implementation in code.
+10. **Template Method Design Pattern** 🪜
+11. **Chain of Responsibility**  🔗
 
 ## 🌟 Contributions
 
