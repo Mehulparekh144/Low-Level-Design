@@ -10,7 +10,9 @@ import Splitwise.user.User;
 import Splitwise.user.UserManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Splitwise {
   UserManager userManager;
@@ -55,6 +57,59 @@ public class Splitwise {
     for(User u : userManager.getAllUsers()){
       balanceSheetManager.showBalanceSheet(u);
     }
+  }
+
+
+  //Follow up: Implement simplify debts feature
+  public int minTransfer(int[][] transactions){
+
+    Map<Integer,Integer> memberVsBalance = new HashMap<>();
+
+    for(int[] txn : transactions){
+      int from = txn[0];
+      int to = txn[1];
+      int amount = txn[2];
+
+      memberVsBalance.put(from, memberVsBalance.getOrDefault(from,0) - amount);
+      memberVsBalance.put(to, memberVsBalance.getOrDefault(to,0) + amount);
+    }
+
+    System.out.println(memberVsBalance);
+
+    List<Integer> balances = new ArrayList<>();
+    memberVsBalance.forEach((k,v) -> {
+      if(v != 0){
+        balances.add(v);
+      }
+    });
+
+    return dfs(balances, 0);
+  }
+
+  private int dfs(List<Integer> balances , int idx){
+    if(balances.isEmpty() || idx == balances.size()){
+      return 0;
+    }
+
+    if(balances.get(idx) == 0) return dfs(balances, idx+1);
+
+    int currVal = balances.get(idx);
+    int minTxt = Integer.MAX_VALUE;
+
+    for(int txnIdx = idx + 1 ; txnIdx < balances.size() ; txnIdx++){
+      int next = balances.get(txnIdx);
+
+      if(currVal*next < 0){
+        balances.set(txnIdx , currVal + next);
+        minTxt = Math.min(minTxt , 1 + dfs(balances , idx+1));
+
+        if(currVal + next == 0){
+          break;
+        }
+      }
+    }
+
+    return minTxt;
   }
 
 }
